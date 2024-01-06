@@ -36,14 +36,14 @@ code {
   margin: 5rem auto;
 }
 
+.app-header {
+  font-size: 3.2rem;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.app-header {
-  font-size: 3.2rem;
 }
 
 .cards-grid {
