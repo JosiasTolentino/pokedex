@@ -1,0 +1,10 @@
+.ipp-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.select-options {
+  border-radius: 10rem;
+  padding: 0.2rem 0.4rem;
+}
