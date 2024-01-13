@@ -9,17 +9,18 @@ export default function Search({ setSelectedPokemon }) {
   const getUrl = `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`;
 
   function getPokemon() {
-    fetch(getUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        setSelectedPokemon({ id: data.id, name: data.name });
-        console.log(data);
-        console.log(setSelectedPokemon);
-      })
-      .catch((err) => {
-        console.log("Pokemon not found", err);
-        setNotFound(true);
-      });
+    if (searchPokemon !== "")
+      fetch(getUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          setSelectedPokemon({ id: data.id, name: data.name });
+          console.log(data);
+          console.log(setSelectedPokemon);
+        })
+        .catch((err) => {
+          console.log("Pokemon not found", err);
+          setNotFound(true);
+        });
   }
 
   function handleSearch() {
