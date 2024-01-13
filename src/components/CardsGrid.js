@@ -1,5 +1,5 @@
 import Loader from "./Loader";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 export default function CardsGrid({ pokemonList, isLoading, onOpenDetails }) {
   return (

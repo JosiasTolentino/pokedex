@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import img from "../assets/pngaaa.com-96212.png";
-import PokemonAtributes from "./PokemonAtributes";
+import img from "../../assets/pngaaa.com-96212.png";
+import PokemonAtributes from "../PokemonAtributes";
+import "./pokemonDetails.css";
 
 export default function PokemonDetail({ selectedPokemon, oncloseDetails }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
@@ -56,7 +57,7 @@ export default function PokemonDetail({ selectedPokemon, oncloseDetails }) {
         {isLoading ? "" : <PokemonAtributes pokemonInfo={pokemonInfo} />}
       </div>
 
-      <button className="button centered" onClick={oncloseDetails}>
+      <button className="button" onClick={oncloseDetails}>
         Close details
       </button>
     </div>
