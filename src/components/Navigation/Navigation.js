@@ -1,3 +1,5 @@
+import "./navigation.css";
+
 export default function Navigation({ onNextPage, onPreviousPage, offset }) {
   return (
     <div className="buttons-container">

@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import PokemonDetail from "./PokemonDetail";
-import ItemsPerPage from "./ItemsPerPage";
-import Navigation from "./Navigation";
+import PokemonDetail from "./PokemonDetails/PokemonDetail";
+import ItemsPerPage from "./ItemsPerPage/ItemsPerPage";
+import Navigation from "./Navigation/Navigation";
 import CardsGrid from "./CardsGrid";
 import "../styles/app.css";
 import "../styles/typeColors.css";
-import "../styles/card.css";
-import "../styles/typeColors.css";
-import "../styles/pokemonDetails.css";
-import "../styles/itemsPerPage.css";
-import "../styles/navigation.css";
+import Search from "./Search/Search";
 
 export default function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -65,6 +61,7 @@ export default function App() {
           />
         ) : (
           <>
+            <Search setSelectedPokemon={setSelectedPokemon} />
             <CardsGrid
               pokemonList={pokemonList}
               isLoading={isLoading}
