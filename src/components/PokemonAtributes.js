@@ -1,5 +1,4 @@
 export default function PokemonAtributes({ pokemonInfo }) {
-  console.log(pokemonInfo);
   return (
     <>
       {pokemonInfo.stats.map((stats) => {

@@ -26,11 +26,18 @@ export default function App() {
       } catch (err) {
         console.log(err);
       } finally {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       }
     }
     fetchPokemons();
   }, [url]);
+
+  useEffect(() => {
+    const array1 = Array(limit).fill(1);
+    console.log(array1);
+  }, [limit]);
 
   function handleNextPage() {
     setOffset(Number(offset) + Number(limit));
@@ -61,7 +68,7 @@ export default function App() {
           />
         ) : (
           <>
-            <Search setSelectedPokemon={setSelectedPokemon} />
+            <Search onOpenDetails={handleOpenDetails} />
             <CardsGrid
               pokemonList={pokemonList}
               isLoading={isLoading}

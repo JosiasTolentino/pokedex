@@ -2,20 +2,18 @@ import { useState } from "react";
 import "./search.css";
 import "../../styles/typeColors.css";
 
-export default function Search({ setSelectedPokemon }) {
+export default function Search({ onOpenDetails }) {
   const [searchPokemon, setSearchPokemon] = useState("");
   const [notFound, setNotFound] = useState(false);
 
-  const getUrl = `https://pokeapi.co/api/v2/pokemon/${searchPokemon}`;
+  const getUrl = `https://pokeapi.co/api/v2/pokemon/${searchPokemon.toLowerCase()}`;
 
   function getPokemon() {
     if (searchPokemon !== "")
       fetch(getUrl)
         .then((response) => response.json())
         .then((data) => {
-          setSelectedPokemon({ id: data.id, name: data.name });
-          console.log(data);
-          console.log(setSelectedPokemon);
+          onOpenDetails(data.id, data.name);
         })
         .catch((err) => {
           console.log("Pokemon not found", err);
@@ -27,7 +25,6 @@ export default function Search({ setSelectedPokemon }) {
     getPokemon();
   }
 
-  console.log(searchPokemon);
   return (
     <div className="search-container">
       <div className="input-container">

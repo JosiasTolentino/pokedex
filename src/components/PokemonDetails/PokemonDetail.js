@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import img from "../../assets/pngaaa.com-96212.png";
 import PokemonAtributes from "../PokemonAtributes";
 import "./pokemonDetails.css";
+import DetailSkeleton from "../Skeleton/DetailSkeleton";
 
 export default function PokemonDetail({ selectedPokemon, oncloseDetails }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
@@ -19,7 +20,9 @@ export default function PokemonDetail({ selectedPokemon, oncloseDetails }) {
       } catch (err) {
         console.log(err);
       } finally {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       }
     }
     fetchPokemons();
@@ -36,26 +39,36 @@ export default function PokemonDetail({ selectedPokemon, oncloseDetails }) {
 
   return (
     <div className="details-container">
-      <div className={`detail-header-container bg-color-${pokemonType[0]}`}>
-        <div className="container-abc">
-          <div className="title-container">
-            <p className="detail-name">{formatedName}</p>
-            <div className="detail-tag-container">
-              {pokemonType.map((type) => (
-                <span key={type} className={`tag bg-color-${type}`}>
-                  {type}
-                </span>
-              ))}
+      {isLoading ? (
+        <DetailSkeleton />
+      ) : (
+        <>
+          <div className={`detail-header-container bg-color-${pokemonType[0]}`}>
+            <div className="container-abc">
+              <div className="title-container">
+                <p className="detail-name">{formatedName}</p>
+                <div className="detail-tag-container">
+                  {pokemonType.map((type) => (
+                    <span key={type} className={`tag bg-color-${type}`}>
+                      {type}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <p className="detail-id">#{formatedId}</p>
             </div>
+            <img className="detail-pokeball-img" src={img} alt={"pokeball"} />
           </div>
-          <p className="detail-id">#{formatedId}</p>
-        </div>
-        <img className="detail-pokeball-img" src={img} alt={"pokeball"} />
-      </div>
-      <div className="atributes-container">
-        <img src={pokemonImage} alt={formatedName} className="detail-image" />
-        {isLoading ? "" : <PokemonAtributes pokemonInfo={pokemonInfo} />}
-      </div>
+          <div className="atributes-container">
+            <img
+              src={pokemonImage}
+              alt={formatedName}
+              className="detail-image"
+            />
+            {isLoading ? "" : <PokemonAtributes pokemonInfo={pokemonInfo} />}
+          </div>
+        </>
+      )}
 
       <button className="button" onClick={oncloseDetails}>
         Close details
