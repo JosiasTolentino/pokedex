@@ -14,9 +14,6 @@ export default function App() {
   const [limit, setLimit] = useState(20);
   const [selectedPokemon, setSelectedPokemon] = useState({ id: 0, name: "" });
   const [listIsOver, setListIsOver] = useState(false);
-
-  console.log(offset);
-
   const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
 
   useEffect(() => {
