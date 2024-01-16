@@ -66,10 +66,18 @@
   position: absolute;
   height: 20rem;
   max-width: 24rem;
-  bottom: 12rem;
+  bottom: 13.5rem;
   right: 2rem;
 }
 
-.centered {
+.button {
+  width: 15rem;
+  padding: 1rem 0;
+  color: var(--normal-text-color);
+  background-color: var(--button-color);
+  border: none;
+  border-radius: 10rem;
+  font-size: 1.8rem;
+  font-weight: bold;
   align-self: center;
 }

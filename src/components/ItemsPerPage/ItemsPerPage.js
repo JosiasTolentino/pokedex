@@ -1,3 +1,5 @@
+import "./itemsPerPage.css";
+
 export default function ItemsPerPage({ limit, setLimit }) {
   const limitOptions = Array(10)
     .fill(10)

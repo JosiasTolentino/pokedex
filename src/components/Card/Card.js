@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import img from "../assets/pngaaa.com-96212.png";
+import img from "../../assets/pngaaa.com-96212.png";
+import "./card.css";
 
 export default function Card({ pokemon, onOpenDetails }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);

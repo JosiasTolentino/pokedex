@@ -16,7 +16,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem; /* default font of 16px */
   line-height: 1.3;
-  color: #373737;
+  color: #f9fafb;
+  background-color: #083344;
 }
 
 code {
@@ -28,7 +29,7 @@ code {
   --normal-text-color: #f9fafb;
   --id-text-color: #0000003b;
   --tag-bg-color: #ffffff3f;
-  --button-color: #a040a0;
+  --button-color: #0d5470;
 }
 
 .app {
@@ -36,8 +37,9 @@ code {
   margin: 5rem auto;
 }
 
-.app-header {
-  font-size: 3.2rem;
+.title {
+  font-size: 7.2rem;
+  color: #fcd34d;
 }
 
 .container {

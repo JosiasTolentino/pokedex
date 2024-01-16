@@ -1,0 +1,35 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.input-container {
+  display: flex;
+}
+
+input {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background-color: #cffafe;
+  border-radius: 5rem 0 0 5rem;
+  font-size: 1.8rem;
+}
+
+button {
+  background-color: #cffafe;
+  border-radius: 0 5rem 5rem 0;
+  padding: 0.6rem 1.2rem;
+  font-size: 1.8rem;
+  border: none;
+}
+
+.error-color {
+  background-color: #fca5a5;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 1.4rem;
+}

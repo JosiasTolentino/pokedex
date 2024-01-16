@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
-import PokemonDetail from "./PokemonDetail";
-import ItemsPerPage from "./ItemsPerPage";
-import Navigation from "./Navigation";
+import PokemonDetail from "./PokemonDetails/PokemonDetail";
+import ItemsPerPage from "./ItemsPerPage/ItemsPerPage";
+import Navigation from "./Navigation/Navigation";
 import CardsGrid from "./CardsGrid";
 import "../styles/app.css";
 import "../styles/typeColors.css";
-import "../styles/card.css";
-import "../styles/typeColors.css";
-import "../styles/pokemonDetails.css";
-import "../styles/itemsPerPage.css";
-import "../styles/navigation.css";
+import Search from "./Search/Search";
 
 export default function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -30,11 +26,18 @@ export default function App() {
       } catch (err) {
         console.log(err);
       } finally {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       }
     }
     fetchPokemons();
   }, [url]);
+
+  useEffect(() => {
+    const array1 = Array(limit).fill(1);
+    console.log(array1);
+  }, [limit]);
 
   function handleNextPage() {
     setOffset(Number(offset) + Number(limit));
@@ -65,6 +68,7 @@ export default function App() {
           />
         ) : (
           <>
+            <Search onOpenDetails={handleOpenDetails} />
             <CardsGrid
               pokemonList={pokemonList}
               isLoading={isLoading}
