@@ -10,7 +10,7 @@ import Search from "./Search/Search";
 export default function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [offset, setOffset] = useState(1010);
+  const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(20);
   const [selectedPokemon, setSelectedPokemon] = useState({ id: 0, name: "" });
   const [listIsOver, setListIsOver] = useState(false);
