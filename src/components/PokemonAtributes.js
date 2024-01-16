@@ -3,7 +3,7 @@ export default function PokemonAtributes({ pokemonInfo }) {
     <>
       {pokemonInfo.stats.map((stats) => {
         return (
-          <div>
+          <div key={stats.stat.name}>
             <p>
               {stats.stat.name.charAt(0).toUpperCase() +
                 stats.stat.name.slice(1)}

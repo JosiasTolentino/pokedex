@@ -29,7 +29,7 @@ export default function Search({ onOpenDetails }) {
     <div className="search-container">
       <div className="input-container">
         <input
-          className={notFound && "error-color"}
+          className={notFound ? "error-color" : ""}
           type="text"
           placeholder="Pokemon name or ID"
           value={searchPokemon}
@@ -38,7 +38,10 @@ export default function Search({ onOpenDetails }) {
             setNotFound(false);
           }}
         ></input>
-        <button className={notFound && "error-color"} onClick={handleSearch}>
+        <button
+          className={notFound ? "error-color" : ""}
+          onClick={handleSearch}
+        >
           🔍
         </button>
       </div>

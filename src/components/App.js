@@ -10,9 +10,12 @@ import Search from "./Search/Search";
 export default function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [offset, setOffset] = useState(0);
+  const [offset, setOffset] = useState(1010);
   const [limit, setLimit] = useState(20);
   const [selectedPokemon, setSelectedPokemon] = useState({ id: 0, name: "" });
+  const [listIsOver, setListIsOver] = useState(false);
+
+  console.log(offset);
 
   const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
 
@@ -22,7 +25,18 @@ export default function App() {
         setIsLoading(true);
         const res = await fetch(url);
         const data = await res.json();
-        setPokemonList(data.results);
+        const filteredPokemonList = data.results.filter(
+          (pokemon) => pokemon.url.length < 40
+        );
+        setPokemonList(filteredPokemonList);
+        const lastPokemon = data.results.filter(
+          (pokemon) => pokemon.url.length >= 40
+        );
+        if (lastPokemon.length > 1) {
+          setListIsOver(true);
+        } else {
+          setListIsOver(false);
+        }
       } catch (err) {
         console.log(err);
       } finally {
@@ -33,11 +47,6 @@ export default function App() {
     }
     fetchPokemons();
   }, [url]);
-
-  useEffect(() => {
-    const array1 = Array(limit).fill(1);
-    console.log(array1);
-  }, [limit]);
 
   function handleNextPage() {
     setOffset(Number(offset) + Number(limit));
@@ -69,6 +78,12 @@ export default function App() {
         ) : (
           <>
             <Search onOpenDetails={handleOpenDetails} />
+            <Navigation
+              listIsOver={listIsOver}
+              offset={offset}
+              onNextPage={handleNextPage}
+              onPreviousPage={handlePreviousPage}
+            />
             <CardsGrid
               pokemonList={pokemonList}
               isLoading={isLoading}
@@ -76,6 +91,7 @@ export default function App() {
             />
             <ItemsPerPage limit={limit} setLimit={setLimit} />
             <Navigation
+              listIsOver={listIsOver}
               offset={offset}
               onNextPage={handleNextPage}
               onPreviousPage={handlePreviousPage}

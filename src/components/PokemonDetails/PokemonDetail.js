@@ -33,9 +33,11 @@ export default function PokemonDetail({ selectedPokemon, oncloseDetails }) {
     selectedPokemon.name.slice(1);
   const formatedId = Number(pokemonInfo.id).toString().padStart(3, "0");
   const pokemonImage =
-    pokemonInfo.id > 649
+    pokemonInfo.id < 649
+      ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonInfo.id}.svg`
+      : pokemonInfo.id < 1012
       ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonInfo.id}.png`
-      : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonInfo.id}.svg`;
+      : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png`;
 
   return (
     <div className="details-container">

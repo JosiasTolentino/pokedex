@@ -5,7 +5,7 @@ import "./card.css";
 export default function Card({ pokemon, onOpenDetails }) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
   const [pokemonType, setPokemonType] = useState([]);
-  const url = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`;
+  const url = `${pokemon.url}`;
 
   useEffect(() => {
     async function fetchPokemons() {
@@ -25,9 +25,11 @@ export default function Card({ pokemon, onOpenDetails }) {
     pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
   const formatedId = Number(pokemonInfo.id).toString().padStart(3, "0");
   const pokemonImage =
-    pokemonInfo.id > 649
+    pokemonInfo.id < 649
+      ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonInfo.id}.svg`
+      : pokemonInfo.id < 1012
       ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonInfo.id}.png`
-      : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonInfo.id}.svg`;
+      : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemonInfo.id}.png`;
 
   return (
     <div
